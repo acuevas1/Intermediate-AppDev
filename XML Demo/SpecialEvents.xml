@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<specialEvent>
+  <event EventCode ="A" active="true">Anniversary</event>
+  <event EventCode ="B" active="true">Birthday</event>
+  <event EventCode ="O" active="true">Other</event>
+  <event EventCode ="P" active="true">Promotion</event>
+  <event EventCode ="S" active="true">Sport</event>
+</specialEvent>
