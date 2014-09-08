@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Students>
+    <Student>
+        <Studentnumber>10009001</Studentnumber>
+        <FirstName>Brock</FirstName>
+        <LastName>Todd</LastName>
+        <DisplayName>Brock</DisplayName>
+        <Gender>M</Gender>
+        <Address>8755 Strathearn Cr.</Address>
+        <City>Edmonton</City>
+        <ProvinceState>AB</ProvinceState>
+        <Country>CA</Country>
+        <PostalCodeZip>T6C4C5</PostalCodeZip>
+        <BirthDate></BirthDate>
+    </Student>
+
+
+</Students>
