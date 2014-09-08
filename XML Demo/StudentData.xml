@@ -14,5 +14,19 @@
         <BirthDate></BirthDate>
     </Student>
 
+  <Student>
+    <StudentNumber>100009007</StudentNumber>
+        <FirstName>Pierre</FirstName>
+        <LastName>Blancett</LastName>
+        <DisplayName>Pierre</DisplayName>
+        <Gender>M</Gender>
+        <Address>3601 16A Ave.</Address>
+        <City>Edmonton</City>
+        <ProvinceState>AB</ProvinceState>
+        <Country>CA</Country>
+        <PostalCodeZip>T6L2N3</PostalCodeZip>
+        <BirthDate>1969-01-04</BirthDate>
+
+  </Student>
 
 </Students>
