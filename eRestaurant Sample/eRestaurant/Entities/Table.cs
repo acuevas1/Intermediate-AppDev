@@ -8,6 +8,10 @@ namespace eRestaurant.Entities
 {
     public class Table
     {
+
+        public Table() { Available = true; } //default
+
+
         // In EF, by convention, if there is a property with a same name as the class but with the suffix ID, then any framework will assume that this property is mapping to a primary key column on the database table.
 
         //You can still add the KEY but it is not necessary

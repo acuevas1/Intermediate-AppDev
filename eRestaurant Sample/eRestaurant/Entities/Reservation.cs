@@ -7,7 +7,17 @@ using System.Threading.Tasks;
 namespace eRestaurant.Entities
 {
     public class Reservation
+
     {
+        //add in constants for valid reservation values
+        //b= booked ; C=complete; N=No-show; X= Cancelled
+
+        public const string Booked = "B";
+        public const string Complete = "C";
+        public const string NoShow = "N";
+        public const string Cancelled = "X";
+
+
         public int ReservationID { get; set; }
         public string CustomerName { get; set; }
         public DateTime ReservationDate { get; set; }
@@ -24,5 +34,7 @@ namespace eRestaurant.Entities
 
 
         #endregion  
+
+
     }
 }
