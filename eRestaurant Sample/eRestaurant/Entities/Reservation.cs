@@ -14,7 +14,7 @@ namespace eRestaurant.Entities
         public int NumberInParty { get; set; }
         public string ContactPhone { get; set; }
         public string ReservationStatus { get; set; }
-        public string? EventCode { get; set; }
+        public string EventCode { get; set; }
 
         #region Navigation Properties
         //build a rich object model for a table class
