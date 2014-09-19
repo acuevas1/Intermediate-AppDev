@@ -21,7 +21,13 @@ namespace eRestaurant.Requirements.UserStories
         public void AddWaiterScenario() 
         {
 
-            Waiter newGuy = new Waiter();
+            Waiter newGuy = new Waiter()
+            {
+                FirstName="Fred",
+                LastName = "Flintstone",
+                Address ="123 Bedrock",
+                Phone="780.555.1212"
+            };
             int waiterId=-1;
             this.Given(_ => GivenWaiterInformation(newGuy))
                 .When(_ =>WhenIAddTheWaiter (newGuy, out waiterId))
@@ -50,7 +56,7 @@ namespace eRestaurant.Requirements.UserStories
             //sut- system under test
 
             var sut = new eRestaurant.BLL.RestaurantAdminController();
-            waiterId=sut. AddWaiter(newGuy)
+            waiterId = sut.AddWaiter(newGuy);
 
         }
 

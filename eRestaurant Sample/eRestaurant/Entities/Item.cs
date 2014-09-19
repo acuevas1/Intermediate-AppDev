@@ -11,7 +11,7 @@ namespace eRestaurant.Entities
 
         public Item() { Active = true; }
 
-        public int Item { get; set; }
+        public int ItemID { get; set; }
         public string Description { get; set; }
         public decimal CurrentPrice { get; set; }
         public decimal CurrentCost { get; set; }

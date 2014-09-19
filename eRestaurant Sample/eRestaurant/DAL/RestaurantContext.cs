@@ -22,7 +22,7 @@ namespace eRestaurant.DAL
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<SpecialEvent> SpecialEvents { get; set; }
         public DbSet<Table> Tables { get; set; }
-        public DbSet<SpecialEvent> SpecialEvents { get; set; }
+        //public DbSet<SpecialEvent> SpecialEvents { get; set; }
         public DbSet<Bill> Bills { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<MenuCategory> MenuCategories { get; set; }
