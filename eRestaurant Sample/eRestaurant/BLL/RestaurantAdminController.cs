@@ -53,11 +53,12 @@ namespace eRestaurant.BLL
 
         #region Query
         [DataObjectMethod(DataObjectMethodType.Select, false)]
+
         public List<Waiter> ListAllWaiters()
         {
-            using (RestaurantContext context = new RestaurantContext())
+            using (RestaurantContext context = new RestaurantContext()) // using frees context it was used
             {
-                return context.Waiters.ToList();
+                return context.Waiters.ToList();    
             }
         }
 
