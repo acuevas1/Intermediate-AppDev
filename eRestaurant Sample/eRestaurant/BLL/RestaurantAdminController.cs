@@ -2,40 +2,36 @@
 using eRestaurant.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel; // for supporting DataBound Controls in webforms
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace eRestaurant.BLL
 {
+    [DataObject]
     public class RestaurantAdminController
     {
-
         #region Manage Waiters
-                #region Command
-        public int AddWaiter(Waiter item) 
+        #region Command
+        [DataObjectMethod(DataObjectMethodType.Insert, false)]
+        public int AddWaiter(Waiter item)
         {
             using (RestaurantContext context = new RestaurantContext())
-            { 
-                //to do: validation rules....
-
+            {
+                // TODO: Validation rules...
                 var added = context.Waiters.Add(item);
                 context.SaveChanges();
-                return added.WaiterID; // gets the ID of the waiter added
+                return added.WaiterID;
             }
         }
 
-        public void UpdateWaiter(Waiter item) // stuff coming in from the user . take that and attach it to 
-            //our database context and get the entity that matches that entity accdng to the PK
-            //then DBset will have info about the information we got from the user and the info from the db
-            // update the stuff that has only been changed to the DB
-            //2 roundtrip = get the existing one and one to save the changes
-
+        [DataObjectMethod(DataObjectMethodType.Update, false)]
+        public void UpdateWaiter(Waiter item)
         {
             using (RestaurantContext context = new RestaurantContext())
-            { 
-                //to do: validation
-
+            {
+                // TODO: Validation...
                 var attached = context.Waiters.Attach(item);
                 var existing = context.Entry<Waiter>(attached);
                 existing.State = System.Data.Entity.EntityState.Modified;
@@ -43,72 +39,218 @@ namespace eRestaurant.BLL
             }
         }
 
-        public void DeleteWaiter(Waiter item) {
-            using (RestaurantContext context = new RestaurantContext()) {
+        [DataObjectMethod(DataObjectMethodType.Delete, false)]
+        public void DeleteWaiter(Waiter item)
+        {
+            using (RestaurantContext context = new RestaurantContext())
+            {
                 var existing = context.Waiters.Find(item.WaiterID);
                 context.Waiters.Remove(existing);
                 context.SaveChanges();
             }
         }
+        #endregion
 
-                #endregion
-
-
-                #region Query
-        public List<Waiter> ListAllWaiters() 
+        #region Query
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<Waiter> ListAllWaiters()
         {
-            using (RestaurantContext context = new RestaurantContext()) 
+            using (RestaurantContext context = new RestaurantContext())
             {
                 return context.Waiters.ToList();
             }
         }
 
-        public Waiter GetWaiter(int waiterID)
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public Waiter GetWaiter(int waiterId)
         {
             using (RestaurantContext context = new RestaurantContext())
-
-                return context.Waiters.Find(waiterID);
+            {
+                return context.Waiters.Find(waiterId);
+            }
         }
-                #endregion
+        #endregion
         #endregion
 
         #region Manage Tables
-                #region Command
+        #region Command
+        [DataObjectMethod(DataObjectMethodType.Insert, false)]
+        public int AddTable(Table item)
+        {
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                // TODO: Validation rules...
+                var added = context.Tables.Add(item);
+                context.SaveChanges();
+                return added.TableID;
+            }
+        }
 
+        [DataObjectMethod(DataObjectMethodType.Update, false)]
+        public void UpdateTable(Table item)
+        {
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                // TODO: Validation...
+                var attached = context.Tables.Attach(item);
+                var existing = context.Entry<Table>(attached);
+                existing.State = System.Data.Entity.EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
 
-                #endregion
+        [DataObjectMethod(DataObjectMethodType.Delete, false)]
+        public void DeleteTable(Table item)
+        {
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                var existing = context.Tables.Find(item.TableID);
+                context.Tables.Remove(existing);
+                context.SaveChanges();
+            }
+        }
+        #endregion
 
+        #region Query
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<Table> ListAllTables()
+        {
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                return context.Tables.ToList();
+            }
+        }
 
-                #region Query
-
-
-                #endregion
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public Table GetTable(int TableId)
+        {
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                return context.Tables.Find(TableId);
+            }
+        }
+        #endregion
         #endregion
 
         #region Manage Items
-                #region Command
+        #region Command
+        [DataObjectMethod(DataObjectMethodType.Insert, false)]
+        public int AddItem(Item item)
+        {
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                // TODO: Validation rules...
+                var added = context.Items.Add(item);
+                context.SaveChanges();
+                return added.ItemID;
+            }
+        }
 
+        [DataObjectMethod(DataObjectMethodType.Update, false)]
+        public void UpdateItem(Item item)
+        {
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                // TODO: Validation...
+                var attached = context.Items.Attach(item);
+                var existing = context.Entry<Item>(attached);
+                existing.State = System.Data.Entity.EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
 
-                #endregion
+        [DataObjectMethod(DataObjectMethodType.Delete, false)]
+        public void DeleteItem(Item item)
+        {
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                var existing = context.Items.Find(item.ItemID);
+                context.Items.Remove(existing);
+                context.SaveChanges();
+            }
+        }
+        #endregion
 
+        #region Query
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<Item> ListAllItems()
+        {
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                return context.Items.ToList();
+            }
+        }
 
-                #region Query
-
-
-                #endregion
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public Item GetItem(int ItemId)
+        {
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                return context.Items.Find(ItemId);
+            }
+        }
+        #endregion
         #endregion
 
         #region Manage Special Events
-                #region Command
+        #region Command
+        [DataObjectMethod(DataObjectMethodType.Insert, false)]
+        public void AddSpecialEvent(SpecialEvent item)
+        {
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                // TODO: Validation rules...
+                var added = context.SpecialEvents.Add(item);
+                context.SaveChanges();
+            }
+        }
 
+        [DataObjectMethod(DataObjectMethodType.Update, false)]
+        public void UpdateSpecialEvent(SpecialEvent item)
+        {
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                // TODO: Validation...
+                var attached = context.SpecialEvents.Attach(item);
+                var existing = context.Entry<SpecialEvent>(attached);
+                existing.State = System.Data.Entity.EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
 
-                #endregion
-
-
-                #region Query
-
-
-                #endregion
+        [DataObjectMethod(DataObjectMethodType.Delete, false)]
+        public void DeleteSpecialEvent(SpecialEvent item)
+        {
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                var existing = context.SpecialEvents.Find(item.EventCode);
+                context.SpecialEvents.Remove(existing);
+                context.SaveChanges();
+            }
+        }
         #endregion
+
+        #region Query
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<SpecialEvent> ListAllSpecialEvents()
+        {
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                return context.SpecialEvents.ToList();
+            }
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public SpecialEvent GetSpecialEvent(int SpecialEventId)
+        {
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                return context.SpecialEvents.Find(SpecialEventId);
+            }
+        }
+        #endregion
+        #endregion
+
+
     }
 }
