@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode title="Root" description="(do not display)" url="~/">
+    
+    <siteMapNode title="Home" description="Home" url="~/Default.aspx" />
+    
+    <siteMapNode title="Products" description="Our products" url="~/Products.aspx">
+        <siteMapNode title="Hardware" description="Hardware choices" url="~/Hardware.aspx" />
+        <siteMapNode title="Software" description="Software choices" url="~/Software.aspx" />
+    </siteMapNode>
+    
+    <siteMapNode title="Services" description="Services we offer" url="~/Services.aspx">
+        <siteMapNode title="Training" description="Training classes" url="~/Training.aspx" />
+        <siteMapNode title="Consulting" description="Consulting services" url="~/Consulting.aspx" />
+    </siteMapNode>
+      
+    <siteMapNode title="Support" description="Supports plans" url="~/Support.aspx">
+        <siteMapNode title="Support Tickets" description="Need Support?" url="~/MemberServices/SupportTickets.aspx"></siteMapNode>
+    </siteMapNode>
+
+    <siteMapNode title="Member Services" description="Services for Members" url="~/MemberServices/Default.aspx">
+        <siteMapNode title="Downloads" description="Member Downloads" url="~/MemberServices/ProductDownloads.aspx"></siteMapNode>
+      <siteMapNode title="Registered Products" description="Products Registered" url="~/MemberServices/RegisteredProducts.aspx"></siteMapNode>
+    </siteMapNode>
+    
+    <siteMapNode title="About" description="About" url="~/About.aspx" />
+    </siteMapNode>
+  
+  
+</siteMap>
