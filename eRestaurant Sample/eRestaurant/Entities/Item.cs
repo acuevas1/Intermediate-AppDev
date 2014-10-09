@@ -19,5 +19,8 @@ namespace eRestaurant.Entities
         public int Calories { get; set; }
         public string Comment { get; set; }
         public int MenuCategoryID { get; set; }
+        public MenuCategory Category { get; set; }
+
+        
     }
 }

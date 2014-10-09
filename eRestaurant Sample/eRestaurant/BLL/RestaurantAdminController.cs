@@ -74,7 +74,7 @@ namespace eRestaurant.BLL
         #endregion
 
         #region Manage Tables
-        #region Command
+        #region Command Tables
         [DataObjectMethod(DataObjectMethodType.Insert, false)]
         public int AddTable(Table item)
         {
@@ -112,7 +112,7 @@ namespace eRestaurant.BLL
         }
         #endregion
 
-        #region Query
+        #region Query Tables
         [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<Table> ListAllTables()
         {
@@ -134,7 +134,7 @@ namespace eRestaurant.BLL
         #endregion
 
         #region Manage Items
-        #region Command
+        #region Command Items
         [DataObjectMethod(DataObjectMethodType.Insert, false)]
         public int AddItem(Item item)
         {
@@ -172,7 +172,7 @@ namespace eRestaurant.BLL
         }
         #endregion
 
-        #region Query
+        #region Query Items
         [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<Item> ListAllItems()
         {
@@ -231,7 +231,7 @@ namespace eRestaurant.BLL
         }
         #endregion
 
-        #region Query
+        #region Query Special Events
         [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<SpecialEvent> ListAllSpecialEvents()
         {

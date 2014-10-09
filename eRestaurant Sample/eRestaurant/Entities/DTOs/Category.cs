@@ -4,13 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eRestaurant.Entities
+namespace eRestaurant.Entities.DTOs
 {
-    public class MenuCategory
+    public class Category
     {
-        public int MenuCategoryID { get; set; }
         public string Description { get; set; }
-
-        public virtual ICollection<Item> MenuItems { get; set; }
+        public IEnumerable<MenuItem> MenuItems { get; set; }
     }
 }
