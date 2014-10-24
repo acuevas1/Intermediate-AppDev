@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\AdHocController.cs" />
     <Compile Include="BLL\MenuController.cs" />
     <Compile Include="BLL\ReportController.cs" />
     <Compile Include="BLL\RestaurantAdminController.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="Entities\BillItem.cs" />
     <Compile Include="Entities\DTOs\Category.cs" />
     <Compile Include="Entities\DTOs\MenuItem.cs" />
+    <Compile Include="Entities\DTOs\OrderItem.cs" />
     <Compile Include="Entities\Item.cs" />
     <Compile Include="Entities\MenuCategory.cs" />
     <Compile Include="Entities\POCOs\CategorizedItemsSale.cs" />
