@@ -22,11 +22,10 @@ namespace eRestaurant.Entities.DTOs
         {
             get
             {
-                using (var context = new RestaurantContext())
-                {
-                    var result = context. Items.Sum(x => x.CurrentPrice);
-                    return result;
-                }
+                decimal value = 0; //default
+                if (Items != null)
+                    value = Items.Sum(x => x.ItemTotal);
+                return value;
             }
         }
 
