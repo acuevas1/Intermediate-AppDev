@@ -33,3 +33,4 @@ private DateTime GetProperty(Bills x)
 {
 	return x.BillDate;
 }
+
