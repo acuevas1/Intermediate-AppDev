@@ -17,7 +17,7 @@
 					select new
 					{
 						BillDate = info.BillDate,
-						Waiter= info.WaiterID,
+						Waiter= info.Waiter.FirstName + " " + info.Waiter.LastName,
 						Amount= info.BillItems.Sum( bi => bi.Quantity * bi.SalePrice)
 					};
 					

@@ -1,12 +1,11 @@
 <Query Kind="Statements">
   <Connection>
-    <ID>250dc3fa-7ab1-4768-9ae8-cdb45c2d8830</ID>
+    <ID>97f0647f-e92f-4849-9243-b7aba154f972</ID>
     <Persist>true</Persist>
     <Server>.</Server>
     <Database>eRestaurant</Database>
   </Connection>
 </Query>
-
 
 // Find out information on the tables in the restaurant at a specific date/time
 
@@ -44,4 +43,88 @@ var step1 = from data in Tables
                         select billing
              };
 step1.Dump();
+
+// Step 2 - Union the walk-in bills and the reservation bills while extracting the relevant bill info
+// .ToList() helps resolve the "Types in Union or Concat are constructed incompatibly" error
+var step2 = from data in step1.ToList() // .ToList() forces the first result set to be in memory
+            select new
+            {
+                Table = data.Table,
+                Seating = data.Seating,
+                CommonBilling = from info in data.Bills.Union(data.Reservations)
+                                select new //info
+								{
+									BillID= info.BillID,
+									BillTotal= info.BillItems.Sum(bi => bi.Quantity * bi.SalePrice),
+									Waiter= info.Waiter.FirstName,
+									Reservation = info.Reservation
+								}
+            };
+step2.Dump();
+
+// Step 3 - Get just the first CommonBilling item
+//         (presumes no overlaps can occur - i.e., two groups at the same table at the same time)
+var step3 = from data in step2.ToList()
+            select new
+            {
+                Table = data.Table,
+                Seating = data.Seating,
+                Taken = data.CommonBilling.Count() > 0,
+                // .FirstOrDefault() is effectively "flattening" my collection of 1 item into a 
+                // single object whose properties I can get in step 4 using the dot (.) operator
+                CommonBilling = data.CommonBilling.FirstOrDefault()
+            };
+step3.Dump();
+
+// Step 4 - Build our intended seating summary info
+var step4 = from data in step3
+            select new // SeatingSummary()
+            {
+                Table = data.Table,
+                Seating = data.Seating,
+                Taken = data.Taken,
+                // use a ternary expression to conditionally get the bill id (if it exists)
+				// choosing between two possible values
+				//can put another ternary expressions inside
+               
+				//get bill ID 
+				BillID = data.Taken ?               // if(data.Taken)
+                         data.CommonBilling.BillID  // value to use if true
+                       : 							// else
+					   (int?) null,                // value to use if false
+					   
+				//Note: Go back to step 2
+				//get total
+				BillTotal= data.Taken? // if seat is taken
+									//Bill		//Sum
+							data.CommonBilling.BillTotal : (decimal?) null,
+								//true						//false
+								
+								
+				//get waiter name
+				
+				Waiter= data.Taken? data.CommonBilling.Waiter : (string) null,
+				
+				
+				ReservationName= data.Taken? 
+								(data.CommonBilling.Reservation != null ? 
+								 data.CommonBilling.Reservation.CustomerName : (string) null) 
+								: (string)null
+				
+            };
+step4.Dump();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

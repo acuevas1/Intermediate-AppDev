@@ -1,6 +1,6 @@
 <Query Kind="Program">
   <Connection>
-    <ID>250dc3fa-7ab1-4768-9ae8-cdb45c2d8830</ID>
+    <ID>97f0647f-e92f-4849-9243-b7aba154f972</ID>
     <Persist>true</Persist>
     <Server>.</Server>
     <Database>eRestaurant</Database>
@@ -34,6 +34,7 @@ public List<dynamic> ReservationsByTime(DateTime date)
                                select seat.Table.TableNumber
 				};
 	var finalResult = from item in result
-					  group item by item.Date.TimeOfDay;
+					  group item by item.Date.TimeOfDay; // grouping creates something with a key and actual details
+					  
 	return finalResult.ToList<dynamic>();
 }
