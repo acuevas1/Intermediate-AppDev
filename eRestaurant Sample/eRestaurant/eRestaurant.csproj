@@ -62,6 +62,7 @@
     <Compile Include="BLL\MenuController.cs" />
     <Compile Include="BLL\ReportController.cs" />
     <Compile Include="BLL\RestaurantAdminController.cs" />
+    <Compile Include="BLL\SeatingController.cs" />
     <Compile Include="DAL\RestaurantContext.cs" />
     <Compile Include="Entities\Bill.cs" />
     <Compile Include="Entities\BillItem.cs" />

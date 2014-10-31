@@ -10,12 +10,14 @@ namespace eRestaurant.Entities
 
     {
         //add in constants for valid reservation values
-        //b= booked ; C=complete; N=No-show; X= Cancelled
+        // A = arrived B= booked ; C=complete; N=No-show; X= Cancelled
 
+        public const string Arrived = "A";
         public const string Booked = "B";
         public const string Complete = "C";
         public const string NoShow = "N";
         public const string Cancelled = "X";
+      
 
 
         public int ReservationID { get; set; }
