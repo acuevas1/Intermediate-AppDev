@@ -1,5 +1,6 @@
 ﻿using eRestaurant.DAL;
 using eRestaurant.Entities;
+using eRestaurant.Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +15,8 @@ namespace eRestaurant.BLL
         // tells us info about front desk needs (Reservations for the day and the occupancy)
     {
         [DataObjectMethod(DataObjectMethodType.Select)]
-        public List<dynamic> ReservationsByTime(DateTime date)
+        public List<ReservationCollection> ReservationsByTime(DateTime date)
+        //public List<dynamic> ReservationsByTime(DateTime date)
         {
 
             using (var context = new RestaurantContext()) // MUST PUT INSIDE A VAR CONTEXT AFTER GRABBING CODE FROM LINQ PAD
@@ -25,7 +27,7 @@ namespace eRestaurant.BLL
                                 && data.ReservationDate.Month == date.Month
                                 && data.ReservationDate.Day == date.Day
                                 && data.ReservationStatus == Reservation.Booked
-                             select new // DTOs.ReservationSummary()
+                             select new ReservationSummary()
                              {
                                  Name = data.CustomerName,
                                  Date = data.ReservationDate,
@@ -40,9 +42,17 @@ namespace eRestaurant.BLL
                                  //         select seat.Table.TableNumber
                              };
                 var finalResult = from item in result
-                                  group item by item.Date.TimeOfDay; // grouping creates something with a key and actual details
+                                  group item by item.Date.TimeOfDay into itemGroup
+                                  select new ReservationCollection() 
+                                  { 
+                                    Time= itemGroup.Key,
+                                    Reservations=itemGroup.ToList()
+                                  }; 
 
-                return finalResult.ToList<dynamic>();
+
+
+                return finalResult.ToList();
+                //return finalResult.ToList<dynamic>();
             }
         }
     }
