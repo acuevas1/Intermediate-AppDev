@@ -7,18 +7,14 @@ using System.Threading.Tasks;
 namespace eRestaurant.Entities
 {
     public class Reservation
-
     {
-        //add in constants for valid reservation values
-        // A = arrived B= booked ; C=complete; N=No-show; X= Cancelled
-
-        public const string Arrived = "A";
+        // Add in constants for valid reservation status values
+        // B = Booked; A = Arrived; C = Complete; N = No-show; X = Cancelled
         public const string Booked = "B";
+        public const string Arrived = "A";
         public const string Complete = "C";
         public const string NoShow = "N";
         public const string Cancelled = "X";
-      
-
 
         public int ReservationID { get; set; }
         public string CustomerName { get; set; }
@@ -29,14 +25,9 @@ namespace eRestaurant.Entities
         public string EventCode { get; set; }
 
         #region Navigation Properties
-        //build a rich object model for a table class
-
         public virtual ICollection<Table> Tables { get; set; }
         public virtual SpecialEvent SpecialEvent { get; set; }
-
-
-        #endregion  
-
-
+        public virtual ICollection<Bill> Bills { get; set; }
+        #endregion
     }
 }

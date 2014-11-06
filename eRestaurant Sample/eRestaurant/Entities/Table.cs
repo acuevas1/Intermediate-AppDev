@@ -28,5 +28,6 @@ namespace eRestaurant.Entities
         public virtual ICollection<Reservation> Reservations { get; set; }
 
         #endregion  
+        public virtual ICollection<Bill> Bills { get; set; }
     }
 }

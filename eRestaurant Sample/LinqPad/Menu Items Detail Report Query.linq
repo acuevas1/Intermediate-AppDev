@@ -1,20 +1,13 @@
 <Query Kind="Statements">
   <Connection>
-    <ID>fc618045-c805-4cee-a07a-a91c7cce7297</ID>
+    <ID>250dc3fa-7ab1-4768-9ae8-cdb45c2d8830</ID>
     <Persist>true</Persist>
     <Server>.</Server>
     <Database>eRestaurant</Database>
   </Connection>
 </Query>
 
-<Query Kind="Expression">
-  <Connection>
-    <ID>9ce9a7d8-b99a-41be-8f51-0fbda42bc83b</ID>
-    <Persist>true</Persist>
-    <Server>.</Server>
-    <Database>eRestaurant</Database>
-  </Connection>
-</Query>
+
 
 // This query is for pulling out data to be used in a
 // Details report. The query gets all the menu items
