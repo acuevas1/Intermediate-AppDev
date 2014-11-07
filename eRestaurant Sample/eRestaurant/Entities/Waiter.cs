@@ -21,7 +21,7 @@ namespace eRestaurant.Entities
        [Required(AllowEmptyStrings = false), StringLength(15, MinimumLength = 8)]
        public string Address { get; set; }
        public DateTime HireDate { get; set; }
-       public DateTime ReleaseDate { get; set; }
+       public DateTime? ReleaseDate { get; set; }
 
        [NotMapped]
 

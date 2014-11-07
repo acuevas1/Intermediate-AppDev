@@ -8,6 +8,7 @@ namespace eRestaurant.Entities.DTOs
 {
     public class SeatingSummary
     {
+       
         public byte Table { get; set; }
 
         public int Seating { get; set; }
